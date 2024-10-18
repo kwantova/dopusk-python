@@ -30,4 +30,17 @@ print("Верхний ус:", uw)
 lw = a.custom_min(nums)
 print("Нижний ус:", lw)
 
-g.custom_tukey(lw, lq, median, uq, uw)
+ch = input("Отобразить диаграмму Тьюки графически? [y/n]: ")
+if ch == "y" or ch == "Y":
+    cleannums = t.anomal_check(nums)
+    lqc = t.split_sample(cleannums, p = 25)
+    medianc = t.split_sample(cleannums, p = 50)
+    uqc = t.split_sample(cleannums, p = 75)
+    uwc = a.custom_max(cleannums)
+    lwc = a.custom_min(cleannums)
+    g.custom_tukey(lwc, lqc, medianc, uqc, uwc)
+
+elif ch == "n" or ch == "N":
+    print("Сеанс завершен.")
+else:
+    print ("Команда не распознана.")

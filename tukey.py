@@ -38,8 +38,16 @@ def split_sample(nums, p):
     else:
         return num_for_percentile(right, (p - 50) * 2)
 
-"""def anomal_check(nums)
+def anomal_check(nums):
     up = split_sample(nums, 75)
     low = split_sample(nums, 25)
+    dif = up - low
+    numsc = nums.copy()
     for n in nums:
-        if n > """
+        if (n < (low - 1.5 * dif)) or (n > (up + 1.5 * dif)):
+            nums.remove(n)
+    count = len(numsc) - len(nums)
+    print(f"Исключено {count} аномалий.")
+    return nums
+
+
