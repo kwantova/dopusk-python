@@ -4,7 +4,11 @@ import graph as g
 
 nums = []
 while True:
-    num = int(input("Введите число (-1 для завершения): "))
+    try:
+        num = float(input("Введите число (любую букву для завершения): "))
+    except ValueError:
+        print("Ввод окончен.")
+        break
     if num == -1: break
     nums.append(num)
 
